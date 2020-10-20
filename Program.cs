@@ -70,23 +70,22 @@ namespace TP1_Bases
             Park.Add(computer2.Id, computer2);
             Park.Add(computer3.Id, computer3);
 
-            string saisie;
+            string choix;
             NextId = 4;
 
             do
             {
-                
                 Console.WriteLine("Que voulez-vous faire ? ");
                 Console.WriteLine("1 - Afficher le parc informatique");
                 Console.WriteLine("2 - Ajouter un ordinateur");
                 Console.WriteLine("3 - Supprimer un ordinateur");
                 Console.WriteLine("4 - Rechercher un ordinateur");
                 Console.WriteLine("5 - Modifier un ordinateur");
-                Console.WriteLine("6 - Quitter");
+                Console.WriteLine("quit - Quitter");
 
-                saisie = Console.ReadLine();
-                int choix = int.Parse(saisie);
-                switch (choix)
+                choix = Console.ReadLine();
+                int saisie= int.Parse(choix);
+                switch (saisie)
                 {
                     case 1:
                         Console.WriteLine("Parc informatique");
@@ -111,13 +110,13 @@ namespace TP1_Bases
                         break;
                     case 4:
                         Console.WriteLine("Recherche d'ordinateur:");
-                        Console.WriteLine("Quelle est l' Id ? ");
+                        Console.WriteLine("Quelle st l'Id ? ");
                         long IdSearch = long.Parse(Console.ReadLine());
                         displayComputer(Park[IdSearch]);
                         break;
                     case 5:
                         Console.WriteLine("Modification d'ordinateur:");
-                        Console.WriteLine("Quelle est l' Id ? ");
+                        Console.WriteLine("Quelle st l'Id ? ");
                         long IdModify = long.Parse(Console.ReadLine());
                         Park[IdModify] = setComputer(Park[IdModify]);
                         break;
@@ -129,7 +128,7 @@ namespace TP1_Bases
                         Console.WriteLine("Choix non reconnu, saisissez un nombre 1 et 5");
                         break;
                 }
-            } while (choix != 6);
+            } while (saisie != 6);
 
 
             ;

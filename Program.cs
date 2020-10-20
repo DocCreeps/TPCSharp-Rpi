@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP1_Bases
+namespace Tpcsharp
 {
-    public struct Computer
+  /*  public struct Computer
     {
         public long Id { get; set; }
         public string Brand { get; set; }
@@ -14,7 +14,7 @@ namespace TP1_Bases
         public double CPUFrequency { get; set; }
         public double RAM { get; set; }
     }
-
+    */
 
     class Program
     {
@@ -27,6 +27,30 @@ namespace TP1_Bases
             Console.WriteLine("CPU Frequency : " + computer.CPUFrequency);
             Console.WriteLine("RAM : " + computer.RAM);
         }
+        public static void displayLaptop(Laptop laptop)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Id : " + laptop.Id);
+            Console.WriteLine("Brand : " + laptop.Brand);
+            Console.WriteLine("Model : " + laptop.Model);
+            Console.WriteLine("CPU Frequency : " + laptop.CPUFrequency);
+            Console.WriteLine("RAM : " + laptop.RAM);
+            Console.WriteLine("Scren:" + laptop.screen);
+            Console.WriteLine("batteryLoad:" + laptop.batteryLoad);
+        }
+        public static void displayServer(Server server)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Id : " + server.Id);
+            Console.WriteLine("Brand : " + server.Brand);
+            Console.WriteLine("Model : " + server.Model);
+            Console.WriteLine("CPU Frequency : " + server.CPUFrequency);
+            Console.WriteLine("RAM : " + server.RAM);
+            Console.WriteLine("BayNumber : " + server.bayNumber);
+            Console.WriteLine("Raid : " + server.raid);
+
+        }
+
 
         public static Computer setComputer(Computer computer)
         {
@@ -36,16 +60,54 @@ namespace TP1_Bases
             computer.Model = Console.ReadLine();
             Console.WriteLine("CPU Frequency : ");
             computer.CPUFrequency = double.Parse(Console.ReadLine());
-            Console.WriteLine("RAM : ");
-            computer.RAM = double.Parse(Console.ReadLine());
+          /*  Console.WriteLine("RAM : ");
+            computer.RAM = double.Parse(Console.ReadLine());*/
             return computer;
+        }
+        public static Laptop setLaptop(Laptop laptop)
+        {
+            Console.WriteLine("Brand : ");
+            laptop.Brand = Console.ReadLine();
+            Console.WriteLine("Model : ");
+            laptop.Model = Console.ReadLine();
+            Console.WriteLine("CPU Frequency : ");
+            laptop.CPUFrequency = double.Parse(Console.ReadLine());
+          /*  Console.WriteLine("RAM : ");
+             lomputer.RAM = double.Parse(Console.ReadLine());
+            Console.WriteLine("écran en pouce ? ");
+            laptop.screen = int.Parse(Console.ReadLine());
+            Console.WriteLine("Chargement ? ");
+            laptop.load= int.Parse(Console.ReadLine());*/
+            return laptop;
+        }
+        public static Server setServer(Server server)
+        {
+            Console.WriteLine("Brand : ");
+            server.Brand = Console.ReadLine();
+            Console.WriteLine("Model : ");
+            server.Model = Console.ReadLine();
+            Console.WriteLine("CPU Frequency : ");
+            server.CPUFrequency = double.Parse(Console.ReadLine());
+            /* Console.WriteLine("RAM : ");
+              computer.RAM = double.Parse(Console.ReadLine());*/
+            Console.WriteLine("bayNumber : ");
+            server.bayNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("raid : ");
+            server.raid = int.Parse(Console.ReadLine());
+            return server;
         }
         static void Main(string[] args)
         {
-            Dictionary<long, Computer> Park = new Dictionary<long, Computer>();
+           /* Computer newComputeur = new Computer();
+            Laptop newLaptop = new Laptop();
+            Server newServer = new Server(); */
+
+            Dictionary<long, Computer> ParkC = new Dictionary<long, Computer>();
+           /* Dictionary<long, Laptop> ParkL = new Dictionary<long, Laptop>();
+            Dictionary<long, Server> ParkS = new Dictionary<long, Server>();*/
             long NextId;
 
-            Computer computer1 = new Computer();
+           /* Computer computer1 = new Computer();
             computer1.Id = 1;
             computer1.Brand = "Apple";
             computer1.Model = "MacBook Pro";
@@ -69,7 +131,7 @@ namespace TP1_Bases
             Park.Add(computer1.Id, computer1);
             Park.Add(computer2.Id, computer2);
             Park.Add(computer3.Id, computer3);
-
+            */
             string choix;
             NextId = 4;
 
@@ -81,46 +143,75 @@ namespace TP1_Bases
                 Console.WriteLine("3 - Supprimer un ordinateur");
                 Console.WriteLine("4 - Rechercher un ordinateur");
                 Console.WriteLine("5 - Modifier un ordinateur");
+                Console.WriteLine("6 - Ajouter un Laptop");
+                Console.WriteLine("7 - Ajouter un Server");
                 Console.WriteLine("quit - Quitter");
 
                 choix = Console.ReadLine();
-                int saisie= int.Parse(choix);
-                switch (saisie)
+                switch (choix)
                 {
-                    case 1:
+                    case "1":
                         Console.WriteLine("Parc informatique");
-                        foreach (KeyValuePair<long, Computer> idComputerPair in Park)
+                        Console.WriteLine("Les PC");
+                        foreach (KeyValuePair<long, Computer> idComputerPair in ParkC)
                         {
                             displayComputer(idComputerPair.Value);
+                            
                         }
+                       /* Console.WriteLine("Les Laptop");
+                        foreach (KeyValuePair<long, Laptop> idLaptopPair in ParkL)
+                        {
+                            displayComputer(idLaptopPair.Value);
+                        }
+                        Console.WriteLine("Les Servers");
+                        foreach (KeyValuePair<long, Server> idServerPair in ParkS)
+                        {
+                            displayComputer(idServerPair.Value);
+                        }*/
                         break;
-                    case 2:
+                    case "2":
                         Console.WriteLine("Ajout d'ordinateur:");
                         Computer newComputer = new Computer();
                         newComputer.Id = NextId;
                         NextId++;
                         newComputer = setComputer(newComputer);
-                        Park.Add(newComputer.Id, newComputer);
+                        ParkC.Add(newComputer.Id, newComputer);
                         break;
-                    case 3:
+                    case "3":
                         Console.WriteLine("Suppression d'ordinateur:");
                         Console.WriteLine("Indiquez le numéro de l'ordinateur que vous voulez supprimer :");
                         long IdDelete = long.Parse(Console.ReadLine());
-                        Park.Remove(IdDelete);
+                        ParkC.Remove(IdDelete);
                         break;
-                    case 4:
+                    case "4":
                         Console.WriteLine("Recherche d'ordinateur:");
-                        Console.WriteLine("Quelle st l'Id ? ");
+                        Console.WriteLine("Id ?");
                         long IdSearch = long.Parse(Console.ReadLine());
-                        displayComputer(Park[IdSearch]);
+                        displayComputer(ParkC[IdSearch]);
                         break;
-                    case 5:
+                    case "5":
                         Console.WriteLine("Modification d'ordinateur:");
-                        Console.WriteLine("Quelle st l'Id ? ");
+                        Console.WriteLine("Id ?");
                         long IdModify = long.Parse(Console.ReadLine());
-                        Park[IdModify] = setComputer(Park[IdModify]);
+                        ParkC[IdModify] = setComputer(ParkC[IdModify]);
                         break;
-                    case 6:
+                    case "6":
+                        Console.WriteLine("Ajout d'un Laptop:");
+                        Laptop newLaptop = new Laptop();
+                        newLaptop.Id = NextId;
+                        NextId++;
+                        newLaptop = setLaptop(newLaptop);
+                        ParkC.Add(newLaptop.Id, newLaptop);
+                        break;
+                    case "7":
+                        Console.WriteLine("Ajout d'un Server:");
+                        Server newServer = new Server();
+                        newServer.Id = NextId;
+                        NextId++;
+                        newServer = setServer(newServer);
+                        ParkC.Add(newServer.Id, newServer);
+                        break;
+                    case "quit":
                         Console.WriteLine("Extinction");
                         Environment.Exit(0);
                         break;
@@ -128,10 +219,10 @@ namespace TP1_Bases
                         Console.WriteLine("Choix non reconnu, saisissez un nombre 1 et 5");
                         break;
                 }
-            } while (saisie != 6);
+            } while (choix != "quit");
 
 
-            ;
+
         }
     }
 }

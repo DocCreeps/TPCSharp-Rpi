@@ -1,0 +1,6 @@
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\bin\Debug\Tp1.exe.config
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\bin\Debug\Tp1.exe
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\bin\Debug\Tp1.pdb
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\obj\Debug\Tp1.exe
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\obj\Debug\Tp1.pdb
+C:\Users\doria\Desktop\OneDrive_1_19-10-2020\Tp1\obj\Debug\Tpcsharp.csprojAssemblyReference.cache
